@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Local testing
+*.log
+
+# Do not commit these if you ever add real secrets
+.env
+.env.local

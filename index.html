@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<!--
+  Luke Perea Portfolio
+  Professional single-page site — ready for production deployment.
+  Deployed via Vercel (recommended) or Netlify.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>Luke Perea • Transformation Leader | El Paso, Texas</title>
+  <meta name="description" content="Results-driven transformation leader based in El Paso, Texas. Specializing in organizational change, process automation, and building high-performance teams.">
+  <meta name="author" content="Luke Perea">
+
+  <!-- 
+    IMPORTANT: Update these URLs after deployment with your real domain 
+    Example: https://lukeperea.com or https://yourname.vercel.app
+  -->
+  <link rel="canonical" href="https://lukeperea.com">
+
+  <!-- Open Graph / LinkedIn Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lukeperea.com">
+  <meta property="og:title" content="Luke Perea • Transformation Leader in El Paso, Texas">
+  <meta property="og:description" content="Results-driven transformation leader reshaping organizations through operational excellence, automation, and high-performance culture. Based in El Paso, Texas.">
+  <meta property="og:image" content="https://lukeperea.com/images/franklin-mountains.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Luke Perea">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Luke Perea • Transformation Leader | El Paso, Texas">
+  <meta name="twitter:description" content="Results-driven transformation leader based in El Paso, Texas. Organizational change, process automation, and high-performance teams.">
+  <meta name="twitter:image" content="https://lukeperea.com/images/franklin-mountains.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23B45309%22/><text x=%2250%22 y=%2268%22 font-family=%22Georgia,serif%22 font-size=%2256%22 font-weight=%22700%22 fill=%22white%22 text-anchor=%22middle%22>LP</text></svg>">
+
+  <!-- Performance -->
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+  <!-- Stylesheets -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap');
+    
+    :root {
+      --sand: #F7F1E9;
+      --clay: #B45309;
+      --sunset: #C2410C;
+      --earth: #3F2A1E;
+    }
+    
+    .dark {
+      --sand: #1C1712;
+      --clay: #F97316;
+      --sunset: #FB923C;
+      --earth: #EDE4D7;
+    }
+
+    body {
+      font-family: 'Inter', system_ui, sans-serif;
+    }
+    
+    .heading-serif {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+
+    .section-header {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-header:after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(to right, #B45309, #C2410C);
+      border-radius: 3px;
+    }
+    
+    .dark .section-header:after {
+      background: linear-gradient(to right, #F97316, #FB923C);
+    }
+
+    .nav-link {
+      position: relative;
+      transition: color 0.2s ease;
+    }
+    
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #B45309;
+      transition: width 0.3s ease;
+    }
+    
+    .dark .nav-link:after {
+      background: #F97316;
+    }
+    
+    .nav-link:hover:after {
+      width: 100%;
+    }
+
+    .skill-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .skill-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    }
+
+    .dark .skill-card:hover {
+      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3);
+    }
+
+    .desert-bg {
+      background: linear-gradient(135deg, #F7F1E9 0%, #F4E9DC 100%);
+    }
+    
+    .dark .desert-bg {
+      background: linear-gradient(135deg, #1C1712 0%, #2C241D 100%);
+    }
+
+    .warm-card {
+      background: white;
+      border: 1px solid #E8DFD1;
+    }
+    
+    .dark .warm-card {
+      background: #2C241D;
+      border: 1px solid #3F2A1E;
+    }
+
+    .desert-gradient {
+      background: linear-gradient(90deg, #B45309, #C2410C);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .dark .desert-gradient {
+      background: linear-gradient(90deg, #F97316, #FB923C);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .smooth-scroll {
+      scroll-behavior: smooth;
+    }
+
+    .nav-scrolled {
+      background: rgba(247, 241, 233, 0.95);
+      backdrop-filter: blur(12px);
+    }
+    
+    .dark .nav-scrolled {
+      background: rgba(28, 23, 18, 0.95);
+    }
+
+    .portfolio-shadow {
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15);
+    }
+
+    .subtle-grid {
+      background-image: 
+        linear-gradient(rgba(180, 83, 9, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(180, 83, 9, 0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    
+    .dark .subtle-grid {
+      background-image: 
+        linear-gradient(rgba(249, 115, 22, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(249, 115, 22, 0.045) 1px, transparent 1px);
+    }
+
+    .form-input {
+      transition: all 0.2s ease;
+    }
+    
+    .form-input:focus {
+      outline: none;
+      border-color: #B45309;
+      box-shadow: 0 0 0 4px rgba(180, 83, 9, 0.12);
+    }
+    
+    .dark .form-input:focus {
+      border-color: #F97316;
+      box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.18);
+    }
+  </style>
+</head>
+<body class="smooth-scroll bg-[#F7F1E9] dark:bg-[#1C1712] text-[#3F2A1E] dark:text-[#EDE4D7] transition-colors duration-300">
+  <!-- Navigation -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#F7F1E9]/95 dark:bg-[#1C1712]/95 border-b border-[#E8DFD1] dark:border-[#3F2A1E]">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <div class="flex items-center gap-x-3">
+          <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-[#B45309] to-[#C2410C] flex items-center justify-center">
+            <span class="text-white font-bold text-xl tracking-tighter">LP</span>
+          </div>
+          <div>
+            <div class="font-semibold text-xl tracking-tight">Luke Perea</div>
+            <div class="text-[10px] text-[#B45309] dark:text-[#F97316] -mt-1">EL PASO, TX</div>
+          </div>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center gap-x-9 text-sm font-medium">
+          <a href="#about" class="nav-link text-[#3F2A1E] dark:text-[#EDE4D7] hover:text-[#B45309] dark:hover:text-[#F97316]">About</a>
+          <a href="#expertise" class="nav-link text-[#3F2A1E] dark:text-[#EDE4D7] hover:text-[#B45309] dark:hover:text-[#F97316]">Expertise</a>
+          <a href="#contact" class="nav-link text-[#3F2A1E] dark:text-[#EDE4D7] hover:text-[#B45309] dark:hover:text-[#F97316]">Contact</a>
+        </div>
+
+        <div class="flex items-center gap-x-3">
+          <!-- Dark Mode Toggle -->
+          <button id="theme-toggle" 
+                  class="w-10 h-10 flex items-center justify-center rounded-2xl hover:bg-[#EDE4D7] dark:hover:bg-[#2C241D] transition-colors"
+                  aria-label="Toggle dark mode">
+            <i class="fa-solid fa-moon text-lg text-[#B45309] dark:text-[#F97316]" id="theme-icon"></i>
+          </button>
+
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/lukeaperea/" target="_blank" 
+             class="hidden sm:flex items-center gap-x-2 px-4 py-2 text-sm font-medium rounded-2xl border border-[#E8DFD1] dark:border-[#3F2A1E] hover:bg-[#EDE4D7] dark:hover:bg-[#2C241D] transition-colors">
+            <i class="fa-brands fa-linkedin"></i>
+            <span class="hidden lg:inline">LinkedIn</span>
+          </a>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-btn"
+                  class="md:hidden w-10 h-10 flex items-center justify-center rounded-2xl hover:bg-[#EDE4D7] dark:hover:bg-[#2C241D] transition-colors"
+                  aria-label="Toggle menu">
+            <i class="fa-solid fa-bars text-lg"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-[#E8DFD1] dark:border-[#3F2A1E] bg-[#F7F1E9] dark:bg-[#1C1712]">
+      <div class="px-6 py-6 flex flex-col gap-y-4 text-base font-medium">
+        <a href="#about" class="mobile-nav-link py-1">About</a>
+        <a href="#expertise" class="mobile-nav-link py-1">Expertise</a>
+        <a href="#contact" class="mobile-nav-link py-1">Contact</a>
+        <div class="pt-3 border-t border-[#E8DFD1] dark:border-[#3F2A1E]">
+          <a href="https://www.linkedin.com/in/lukeaperea/" target="_blank" 
+             class="flex items-center gap-x-2 text-[#B45309] dark:text-[#F97316]">
+            <i class="fa-brands fa-linkedin"></i>
+            <span>Connect on LinkedIn</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-20 min-h-[100dvh] flex items-center desert-bg subtle-grid relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 pt-12 pb-20">
+      <div class="grid lg:grid-cols-12 gap-x-12 items-center">
+        
+        <!-- Hero Content -->
+        <div class="lg:col-span-7">
+          <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-3xl bg-white/80 dark:bg-[#2C241D]/80 border border-[#E8DFD1] dark:border-[#3F2A1E] mb-8">
+            <div class="w-2 h-2 rounded-full bg-[#B45309] dark:bg-[#F97316] animate-pulse"></div>
+            <span class="text-sm font-medium text-[#B45309] dark:text-[#F97316]">Based in El Paso, Texas</span>
+          </div>
+
+          <h1 class="text-7xl md:text-8xl leading-[0.92] tracking-tighter heading-serif mb-6">
+            Hi, I'm <span class="desert-gradient">Luke</span>.
+          </h1>
+          
+          <p class="max-w-xl text-2xl md:text-3xl text-[#6B5544] dark:text-[#C4B5A5] font-light tracking-tight mb-10">
+            Results-driven transformation leader reshaping organizations from the desert.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <a href="#contact" 
+               class="group inline-flex items-center justify-center gap-x-3 bg-[#3F2A1E] hover:bg-[#2C241D] dark:bg-[#EDE4D7] dark:text-[#1F1812] dark:hover:bg-white transition-all text-white px-8 py-4 rounded-3xl text-base font-semibold">
+              Let's connect
+              <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+            </a>
+            
+            <a href="#about" 
+               class="inline-flex items-center justify-center gap-x-3 border border-[#E8DFD1] dark:border-[#3F2A1E] hover:bg-white dark:hover:bg-[#2C241D] transition-colors px-8 py-4 rounded-3xl text-base font-semibold">
+              Learn more about me
+            </a>
+          </div>
+
+          <div class="mt-12 flex items-center gap-x-8 text-sm text-[#6B5544] dark:text-[#C4B5A5]">
+            <div class="flex items-center gap-x-2">
+              <i class="fa-solid fa-mountain"></i>
+              <span>Franklin Mountains</span>
+            </div>
+            <div class="hidden sm:block w-px h-3 bg-[#EDE4D7] dark:bg-[#3F2A1E]"></div>
+            <div class="hidden sm:flex items-center gap-x-2">
+              <i class="fa-solid fa-sun"></i>
+              <span>320+ days of sunshine</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Image (desktop) -->
+        <div class="hidden lg:block lg:col-span-5 mt-10 lg:mt-0">
+          <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-[#E8DFD1] dark:border-[#3F2A1E]">
+            <img src="images/franklin-mountains.jpg" alt="Franklin Mountains at golden hour, El Paso, Texas" 
+                 class="w-full h-auto object-cover aspect-[4/3]">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="max-w-6xl mx-auto px-6 py-24">
+    <div class="grid md:grid-cols-12 gap-x-16 gap-y-12 items-center">
+      <div class="md:col-span-5">
+        <div class="relative">
+          <div class="aspect-[4/3] rounded-3xl bg-gradient-to-br from-[#B45309] via-[#C2410C] to-[#F97316] p-1 portfolio-shadow overflow-hidden">
+            <div class="relative w-full h-full rounded-[22px] overflow-hidden">
+              <!-- El Paso / Chihuahuan Desert photo -->
+              <img src="images/chihuahuan-desert.jpg" alt="Chihuahuan Desert landscape near El Paso, Texas at sunrise" 
+                   class="w-full h-full object-cover">
+              
+              <!-- LP Monogram overlay -->
+              <div class="absolute bottom-5 left-5 bg-white/90 dark:bg-[#1C1712]/90 backdrop-blur-sm px-4 py-2 rounded-2xl border border-[#E8DFD1] dark:border-[#3F2A1E]">
+                <span class="text-[#B45309] dark:text-[#F97316] text-2xl font-bold heading-serif tracking-[-1px]">LP</span>
+              </div>
+            </div>
+          </div>
+          <div class="absolute -bottom-4 -right-4 bg-white dark:bg-[#2C241D] border border-[#E8DFD1] dark:border-[#3F2A1E] rounded-2xl px-5 py-3 text-sm font-medium shadow-lg">
+            <div class="flex items-center gap-x-2">
+              <i class="fa-solid fa-map-marker-alt text-[#B45309]"></i>
+              <span>Chihuahuan Desert</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:col-span-7">
+        <div class="uppercase tracking-[2px] text-xs font-semibold text-[#B45309] dark:text-[#F97316] mb-3">ABOUT ME</div>
+        <h2 class="text-5xl md:text-6xl heading-serif tracking-tighter mb-8">A transformation leader shaped by the desert.</h2>
+        
+        <div class="space-y-6 text-[17px] leading-relaxed text-[#4A3A2E] dark:text-[#C4B5A5]">
+          <p>I'm a results-driven transformation leader based in El Paso, Texas. I grew up surrounded by the Franklin Mountains and the vast Chihuahuan Desert — a landscape that taught me patience, clarity, and the beauty of simple, intentional design. I love reshaping whole organizations to deliver the best results possible in the most sustainable and efficient way.</p>
+          
+          <p>Drawing on my management and team-building experience, I create new workflows and habits at every level while building systems and processes that improve efficiency, quality, and profitability. With a background in automation systems delivery and logistics, I drive sustainable growth and embed a high-performance culture that delivers lasting results. Whether I'm implementing transformative initiatives or exploring new ways to elevate operational excellence, my goal is always the same: create work that lasts.</p>
+        </div>
+
+        <div class="mt-9 flex flex-wrap gap-3">
+          <div class="px-4 py-2 rounded-2xl bg-white dark:bg-[#2C241D] border border-[#E8DFD1] dark:border-[#3F2A1E] text-sm font-medium flex items-center gap-x-2">
+            <i class="fa-solid fa-graduation-cap text-[#B45309]"></i>
+            <span>NMSU Alum</span>
+          </div>
+          <div class="px-4 py-2 rounded-2xl bg-white dark:bg-[#2C241D] border border-[#E8DFD1] dark:border-[#3F2A1E] text-sm font-medium flex items-center gap-x-2">
+            <i class="fa-solid fa-language text-[#B45309]"></i>
+            <span>English / Español</span>
+          </div>
+          <div class="px-4 py-2 rounded-2xl bg-white dark:bg-[#2C241D] border border-[#E8DFD1] dark:border-[#3F2A1E] text-sm font-medium flex items-center gap-x-2">
+            <i class="fa-solid fa-hiking text-[#B45309]"></i>
+            <span>Desert Hiker & Athlete</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Expertise Section -->
+  <section id="expertise" class="bg-white dark:bg-[#2C241D] border-y border-[#E8DFD1] dark:border-[#3F2A1E]">
+    <div class="max-w-6xl mx-auto px-6 py-20">
+      <div class="flex flex-col items-center text-center mb-14">
+        <div class="uppercase tracking-[2px] text-xs font-semibold text-[#B45309] dark:text-[#F97316] mb-3">WHAT I BRING</div>
+        <h2 class="text-5xl heading-serif tracking-tighter">Expertise &amp; Approach</h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="skill-card warm-card rounded-3xl p-7 border border-[#E8DFD1] dark:border-[#3F2A1E]">
+          <div class="w-11 h-11 rounded-2xl bg-[#F7F1E9] dark:bg-[#1C1712] flex items-center justify-center mb-5">
+            <i class="fa-solid fa-sync text-2xl text-[#B45309]"></i>
+          </div>
+          <div class="font-semibold text-xl mb-1">Organizational Transformation</div>
+          <div class="text-sm text-[#6B5544] dark:text-[#C4B5A5]">Reshaping teams, workflows, and culture for lasting impact</div>
+        </div>
+
+        <div class="skill-card warm-card rounded-3xl p-7 border border-[#E8DFD1] dark:border-[#3F2A1E]">
+          <div class="w-11 h-11 rounded-2xl bg-[#F7F1E9] dark:bg-[#1C1712] flex items-center justify-center mb-5">
+            <i class="fa-solid fa-robot text-2xl text-[#B45309]"></i>
+          </div>
+          <div class="font-semibold text-xl mb-1">Process Automation</div>
+          <div class="text-sm text-[#6B5544] dark:text-[#C4B5A5]">Designing efficient systems that reduce waste and increase output</div>
+        </div>
+
+        <div class="skill-card warm-card rounded-3xl p-7 border border-[#E8DFD1] dark:border-[#3F2A1E]">
+          <div class="w-11 h-11 rounded-2xl bg-[#F7F1E9] dark:bg-[#1C1712] flex items-center justify-center mb-5">
+            <i class="fa-solid fa-users text-2xl text-[#B45309]"></i>
+          </div>
+          <div class="font-semibold text-xl mb-1">Team Leadership &amp; Change</div>
+          <div class="text-sm text-[#6B5544] dark:text-[#C4B5A5]">Building high-performance habits at every level of the organization</div>
+        </div>
+
+        <div class="skill-card warm-card rounded-3xl p-7 border border-[#E8DFD1] dark:border-[#3F2A1E]">
+          <div class="w-11 h-11 rounded-2xl bg-[#F7F1E9] dark:bg-[#1C1712] flex items-center justify-center mb-5">
+            <i class="fa-solid fa-chart-line text-2xl text-[#B45309]"></i>
+          </div>
+          <div class="font-semibold text-xl mb-1">Data-Driven Decision Making</div>
+          <div class="text-sm text-[#6B5544] dark:text-[#C4B5A5]">Turning insights into sustainable efficiency and profitability gains</div>
+        </div>
+
+        <div class="skill-card warm-card rounded-3xl p-7 border border-[#E8DFD1] dark:border-[#3F2A1E]">
+          <div class="w-11 h-11 rounded-2xl bg-[#F7F1E9] dark:bg-[#1C1712] flex items-center justify-center mb-5">
+            <i class="fa-solid fa-truck text-2xl text-[#B45309]"></i>
+          </div>
+          <div class="font-semibold text-xl mb-1">Automation &amp; Logistics Systems</div>
+          <div class="text-sm text-[#6B5544] dark:text-[#C4B5A5]">Delivering scalable systems that drive operational excellence</div>
+        </div>
+
+        <div class="skill-card warm-card rounded-3xl p-7 border border-[#E8DFD1] dark:border-[#3F2A1E]">
+          <div class="w-11 h-11 rounded-2xl bg-[#F7F1E9] dark:bg-[#1C1712] flex items-center justify-center mb-5">
+            <i class="fa-solid fa-leaf text-2xl text-[#B45309]"></i>
+          </div>
+          <div class="font-semibold text-xl mb-1">Sustainable Operations</div>
+          <div class="text-sm text-[#6B5544] dark:text-[#C4B5A5]">Building growth that lasts — efficient, ethical, and resilient</div>
+        </div>
+
+        <div class="skill-card warm-card rounded-3xl p-7 border border-[#E8DFD1] dark:border-[#3F2A1E]">
+          <div class="w-11 h-11 rounded-2xl bg-[#F7F1E9] dark:bg-[#1C1712] flex items-center justify-center mb-5">
+            <i class="fa-solid fa-tachometer-alt text-2xl text-[#B45309]"></i>
+          </div>
+          <div class="font-semibold text-xl mb-1">High-Performance Culture</div>
+          <div class="text-sm text-[#6B5544] dark:text-[#C4B5A5]">Embedding new habits and accountability across entire organizations</div>
+        </div>
+
+        <div class="skill-card warm-card rounded-3xl p-7 border border-[#E8DFD1] dark:border-[#3F2A1E]">
+          <div class="w-11 h-11 rounded-2xl bg-[#F7F1E9] dark:bg-[#1C1712] flex items-center justify-center mb-5">
+            <i class="fa-solid fa-mountain text-2xl text-[#B45309]"></i>
+          </div>
+          <div class="font-semibold text-xl mb-1">Intentional Execution</div>
+          <div class="text-sm text-[#6B5544] dark:text-[#C4B5A5]">Calm, strategic thinking forged in the desert</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="max-w-6xl mx-auto px-6 py-24">
+    <div class="grid md:grid-cols-12 gap-x-16 gap-y-12">
+      <div class="md:col-span-5">
+        <div class="sticky top-24">
+          <div class="uppercase tracking-[2px] text-xs font-semibold text-[#B45309] dark:text-[#F97316] mb-3">LET'S TALK</div>
+          <h2 class="text-5xl heading-serif tracking-tighter mb-6 leading-none">Want to work together?</h2>
+          <p class="text-lg text-[#6B5544] dark:text-[#C4B5A5] mb-8">Whether you're looking for my skillset, have a project or idea, or just want to say hello — I'd love to hear from you.</p>
+          
+          <div class="space-y-4 text-sm">
+            <a href="https://www.linkedin.com/in/lukeaperea/" target="_blank" class="flex items-center gap-x-3 group">
+              <div class="w-10 h-10 rounded-2xl bg-white dark:bg-[#2C241D] border border-[#E8DFD1] dark:border-[#3F2A1E] flex items-center justify-center group-hover:border-[#B45309] transition-colors">
+                <i class="fa-brands fa-linkedin text-xl text-[#B45309]"></i>
+              </div>
+              <div>
+                <div class="font-medium">LinkedIn</div>
+                <div class="text-[#B45309] dark:text-[#F97316] text-xs">Connect with me</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="md:col-span-7">
+        <div class="warm-card rounded-3xl p-9 border border-[#E8DFD1] dark:border-[#3F2A1E]">
+          <form id="contact-form" class="space-y-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-medium mb-2" for="name">Name</label>
+                <input type="text" id="name" name="from_name" required 
+                       class="form-input w-full px-5 py-3.5 rounded-2xl border border-[#E8DFD1] dark:border-[#3F2A1E] bg-white dark:bg-[#1F1812] text-base">
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-2" for="email">Email</label>
+                <input type="email" id="email" name="from_email" required 
+                       class="form-input w-full px-5 py-3.5 rounded-2xl border border-[#E8DFD1] dark:border-[#3F2A1E] bg-white dark:bg-[#1F1812] text-base">
+              </div>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium mb-2" for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project or just say hello..."
+                        class="form-input w-full px-5 py-4 rounded-3xl border border-[#E8DFD1] dark:border-[#3F2A1E] bg-white dark:bg-[#1F1812] text-base resize-y min-h-[140px]"></textarea>
+            </div>
+
+            <!-- Honeypot field - hidden from humans, traps bots -->
+            <div class="hidden" aria-hidden="true">
+              <label for="website">Website</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            <button type="submit" 
+                    class="w-full flex items-center justify-center gap-x-3 bg-[#3F2A1E] hover:bg-[#2C241D] transition-all text-white dark:bg-[#EDE4D7] dark:text-[#1F1812] dark:hover:bg-white font-semibold py-4 rounded-3xl text-base">
+              <span id="submit-text">Send Message</span>
+              <i class="fa-solid fa-paper-plane" id="submit-icon"></i>
+            </button>
+          </form>
+
+          <!-- Success Message -->
+          <div id="success-message" class="hidden text-center py-10">
+            <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-[#F7F1E9] dark:bg-[#1C1712] flex items-center justify-center">
+              <i class="fa-solid fa-check text-3xl text-[#B45309]"></i>
+            </div>
+            <h3 class="text-2xl font-semibold mb-2">Thank you!</h3>
+            <p class="text-[#6B5544] dark:text-[#C4B5A5]">Your message has been sent. I'll get back to you soon.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-[#E8DFD1] dark:border-[#3F2A1E] py-10">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-y-4 text-sm text-[#6B5544] dark:text-[#C4B5A5]">
+      <div>© <span id="year"></span> Luke Perea. El Paso, Texas.</div>
+      <div class="flex items-center gap-x-6">
+        <a href="https://www.linkedin.com/in/lukeaperea/" target="_blank" class="hover:text-[#B45309] dark:hover:text-[#F97316] transition-colors">LinkedIn</a>
+        <span class="text-[#E8DFD1] dark:text-[#3F2A1E]">•</span>
+        <a href="#contact" class="hover:text-[#B45309] dark:hover:text-[#F97316] transition-colors">Get in touch</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function initializeTailwind() {
+      document.documentElement.classList.add('dark');
+    }
+
+    function initializeThemeToggle() {
+      const toggle = document.getElementById('theme-toggle');
+      const icon = document.getElementById('theme-icon');
+      
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      if (savedTheme === 'light') {
+        document.documentElement.classList.remove('dark');
+        icon.classList.replace('fa-moon', 'fa-sun');
+      } else if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+        icon.classList.replace('fa-sun', 'fa-moon');
+      } else {
+        document.documentElement.classList.add('dark');
+        icon.classList.replace('fa-sun', 'fa-moon');
+      }
+
+      toggle.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        if (isDark) {
+          icon.classList.replace('fa-sun', 'fa-moon');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          icon.classList.replace('fa-moon', 'fa-sun');
+          localStorage.setItem('theme', 'light');
+        }
+      });
+    }
+
+    function initializeNavbar() {
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 30) {
+          navbar.classList.add('nav-scrolled', 'shadow-sm');
+        } else {
+          navbar.classList.remove('nav-scrolled', 'shadow-sm');
+        }
+      });
+    }
+
+    function initializeMobileMenu() {
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+      menuBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.contains('hidden');
+        if (isHidden) {
+          mobileMenu.classList.remove('hidden');
+          menuBtn.innerHTML = '<i class="fa-solid fa-times text-lg"></i>';
+        } else {
+          mobileMenu.classList.add('hidden');
+          menuBtn.innerHTML = '<i class="fa-solid fa-bars text-lg"></i>';
+        }
+      });
+
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          menuBtn.innerHTML = '<i class="fa-solid fa-bars text-lg"></i>';
+        });
+      });
+    }
+
+    function initializeSmoothScroll() {
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const targetId = this.getAttribute('href').substring(1);
+          const target = document.getElementById(targetId);
+          if (target) {
+            e.preventDefault();
+            const offset = 80;
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition - bodyRect - offset;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+          }
+        });
+      });
+    }
+
+    // Contact form with EmailJS
+    // Note: Public keys are visible by design with EmailJS browser SDK.
+    // A honeypot field is used for basic spam protection.
+    function initializeContactForm() {
+      emailjs.init("xWHJIbmTLAix0i87H");
+
+      const form = document.getElementById('contact-form');
+      const successMessage = document.getElementById('success-message');
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const submitText = document.getElementById('submit-text');
+      const submitIcon = document.getElementById('submit-icon');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Honeypot check - silently reject if filled (bots often fill hidden fields)
+        const honeypot = form.querySelector('#website');
+        if (honeypot && honeypot.value.trim() !== '') {
+          // Pretend it succeeded to not alert spammers
+          form.classList.add('hidden');
+          successMessage.classList.remove('hidden');
+          setTimeout(() => {
+            form.reset();
+            form.classList.remove('hidden');
+            successMessage.classList.add('hidden');
+          }, 4200);
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitText.textContent = 'Sending...';
+        submitIcon.classList.replace('fa-paper-plane', 'fa-spinner');
+        submitIcon.classList.add('fa-spin');
+
+        emailjs.sendForm('service_p2fz4ym', 'template_k5ry3sb', form)
+          .then(() => {
+            form.classList.add('hidden');
+            successMessage.classList.remove('hidden');
+
+            setTimeout(() => {
+              form.reset();
+              form.classList.remove('hidden');
+              successMessage.classList.add('hidden');
+              submitBtn.disabled = false;
+              submitText.textContent = 'Send Message';
+              submitIcon.classList.remove('fa-spin');
+              submitIcon.classList.replace('fa-spinner', 'fa-paper-plane');
+            }, 4200);
+          })
+          .catch((error) => {
+            alert("Oops! Something went wrong. Please try again.");
+            console.error("EmailJS Error:", error);
+            submitBtn.disabled = false;
+            submitText.textContent = 'Send Message';
+            submitIcon.classList.remove('fa-spin');
+            submitIcon.classList.replace('fa-spinner', 'fa-paper-plane');
+          });
+      });
+    }
+
+    function setCurrentYear() {
+      document.getElementById('year').textContent = new Date().getFullYear();
+    }
+
+    function initializePortfolio() {
+      initializeTailwind();
+      initializeThemeToggle();
+      initializeNavbar();
+      initializeMobileMenu();
+      initializeSmoothScroll();
+      initializeContactForm();
+      setCurrentYear();
+    }
+
+    document.addEventListener('DOMContentLoaded', initializePortfolio);
+  </script>
+</body>
+</html>
