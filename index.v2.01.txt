@@ -151,60 +151,6 @@
       0%, 100% { opacity: 0.25; transform: scale(0.9); }
       50% { opacity: 1; transform: scale(1.1); }
     }
-        /* Hero texts - guaranteed to switch */
-    .hero-subheadline {
-      color: #2C2118;
-    }
-    .dark .hero-subheadline {
-      color: #C4B5A5;
-    }
-
-    .hero-meta-text {
-      color: #2C2118;
-    }
-    .dark .hero-meta-text {
-      color: #F5EDE3;   /* lighter, more visible in dark mode */
-    }
-        /* Expertise skill card text - now properly switches */
-    .skill-title {
-      color: #3F2A1E;
-    }
-    .dark .skill-title {
-      color: #FFB366;
-    }
-
-    .skill-desc {
-      color: #46362B;
-    }
-    .dark .skill-desc {
-      color: #C9B8A8;
-    }
-        /* Contact section - fixed to match Hero light mode palette */
-    section#contact .contact-heading,
-    section#contact h2 {
-      color: #F5EDE3;           /* "Want to work together" ... matches Hero subheadline in light mode */
-    }
-    .dark section#contact .contact-heading,
-    .dark section#contact h2 {
-      color: #F5EDE3;
-    }
-
-    section#contact .contact-desc,
-    section#contact p {
-      color: #F5EDE3;           /* "Whether you're looking.... etc " matches Hero subheadline in light mode */
-    }
-    .dark section#contact .contact-desc, /* "Whether you're looking.... etc " */
-    .dark section#contact p {
-      color: #F5EDE3;
-    }
-
-    /* Form labels: "Name", "Email", "Message" */
-    .contact-label {
-      color: #C45C26;           /* change this for light mode */
-    }
-    .dark .contact-label {
-      color: #FFB366;           /* change this for dark mode */
-    }
   </style>
 </head>
 <body class="smooth-scroll bg-[#FAF7F0] dark:bg-[#0B0806] text-[#1F170F] dark:text-[#F5EDE3] transition-colors duration-300">
@@ -273,7 +219,7 @@
     </div>
   </nav>
 
-    <!-- Hero Section -->
+  <!-- Hero Section -->
   <section id="hero" class="pt-20 min-h-[100dvh] flex items-center desert-bg relative overflow-hidden">
     <!-- Stars – strictly dark mode only -->
     <div id="stars-container" class="stars hidden dark:block"></div>
@@ -293,28 +239,28 @@
             <span class="desert-gradient">Hi, I'm Luke.</span>
           </h1>
           
-          <!-- Subheadline with custom color switch -->
-          <p class="max-w-xl text-2xl md:text-3xl hero-subheadline font-light tracking-tight mb-10">
+          <!-- Darkened subheadline in light mode -->
+          <p class="max-w-xl text-2xl md:text-3xl text-[#2C2118] dark:text-[#C4B5A5] font-light tracking-tight mb-10">
             Results-driven transformation leader reshaping organizations from the desert.
           </p>
 
           <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <!-- Primary button -->
             <a href="#contact" 
-              class="group inline-flex items-center justify-center gap-x-3 bg-[#1F170F] hover:bg-[#2C241D] dark:bg-[#EDE4D7] dark:text-[#1F1812] dark:hover:bg-white transition-all text-white px-8 py-4 rounded-3xl text-base font-semibold">
+               class="group inline-flex items-center justify-center gap-x-3 bg-[#1F170F] hover:bg-[#2C241D] dark:bg-[#EDE4D7] dark:text-[#1F1812] dark:hover:bg-white transition-all text-white px-8 py-4 rounded-3xl text-base font-semibold">
               Let's connect
               <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
             </a>
             
             <!-- "Learn more about me" now matches "Let's connect" styling exactly -->
             <a href="#about" 
-              class="group inline-flex items-center justify-center gap-x-3 bg-[#1F170F] hover:bg-[#2C241D] dark:bg-[#EDE4D7] dark:text-[#1F1812] dark:hover:bg-white transition-all text-white px-8 py-4 rounded-3xl text-base font-semibold">
+               class="group inline-flex items-center justify-center gap-x-3 bg-[#1F170F] hover:bg-[#2C241D] dark:bg-[#EDE4D7] dark:text-[#1F1812] dark:hover:bg-white transition-all text-white px-8 py-4 rounded-3xl text-base font-semibold">
               Learn more about me
             </a>
           </div>
 
-          <!-- Franklin / sunshine text with custom color switch -->
-          <div class="mt-12 flex items-center gap-x-8 text-sm hero-meta-text">
+          <!-- Darkened Franklin / sunshine text in light mode -->
+          <div class="mt-12 flex items-center gap-x-8 text-sm text-[#2C2118] dark:text-[#1F1812]">
             <div class="flex items-center gap-x-2">
               <i class="fa-solid fa-mountain"></i>
               <span>Franklin Mountains</span>
@@ -331,7 +277,7 @@
         <div class="hidden lg:block lg:col-span-5 mt-10 lg:mt-0">
           <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-[#EDE4D1] dark:border-[#3A3129]">
             <img src="images/franklin-mountains.jpg" alt="Franklin Mountains at golden hour, El Paso, Texas" 
-                class="w-full h-auto object-cover aspect-[4/3]">
+                 class="w-full h-auto object-cover aspect-[4/3]">
             <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent"></div>
           </div>
         </div>
@@ -405,64 +351,64 @@
           <div class="w-11 h-11 rounded-2xl bg-[#F7F1E9] dark:bg-[#1C1611] flex items-center justify-center mb-5">
             <i class="fa-solid fa-sync text-2xl text-[#C45C26] dark:text-[#FFB366]"></i>
           </div>
-          <div class="font-semibold text-xl mb-1 skill-title">Strategic Evolution</div>
-          <div class="text-sm skill-desc">Reshaping teams, workflows, and culture for lasting impact</div>
+          <div class="font-semibold text-xl mb-1 text-[#3F2A1E] dark:text-[#FFB366]">Strategic Evolution</div>
+          <div class="text-sm text-[#46362B] dark:text-[#C9B8A8]">Reshaping teams, workflows, and culture for lasting impact</div>
         </div>
 
         <div class="skill-card warm-card rounded-3xl p-7">
           <div class="w-11 h-11 rounded-2xl bg-[#F7F1E9] dark:bg-[#1C1611] flex items-center justify-center mb-5">
             <i class="fa-solid fa-robot text-2xl text-[#C45C26] dark:text-[#FFB366]"></i>
           </div>
-          <div class="font-semibold text-xl mb-1 skill-title">Process Automation</div>
-          <div class="text-sm skill-desc">Designing efficient systems that reduce waste and increase output</div>
+          <div class="font-semibold text-xl mb-1 text-[#3F2A1E] dark:text-[#FFB366]">Process Automation</div>
+          <div class="text-sm text-[#46362B] dark:text-[#C9B8A8]">Designing efficient systems that reduce waste and increase output</div>
         </div>
 
         <div class="skill-card warm-card rounded-3xl p-7">
           <div class="w-11 h-11 rounded-2xl bg-[#F7F1E9] dark:bg-[#1C1611] flex items-center justify-center mb-5">
             <i class="fa-solid fa-users text-2xl text-[#C45C26] dark:text-[#FFB366]"></i>
           </div>
-          <div class="font-semibold text-xl mb-1 skill-title">Team Leadership &amp; Change</div>
-          <div class="text-sm skill-desc">Building high-performance habits at every level of the organization</div>
+          <div class="font-semibold text-xl mb-1 text-[#3F2A1E] dark:text-[#FFB366]">Team Leadership &amp; Change</div>
+          <div class="text-sm text-[#46362B] dark:text-[#C9B8A8]">Building high-performance habits at every level of the organization</div>
         </div>
 
         <div class="skill-card warm-card rounded-3xl p-7">
           <div class="w-11 h-11 rounded-2xl bg-[#F7F1E9] dark:bg-[#1C1611] flex items-center justify-center mb-5">
             <i class="fa-solid fa-chart-line text-2xl text-[#C45C26] dark:text-[#FFB366]"></i>
           </div>
-          <div class="font-semibold text-xl mb-1 skill-title">Data-Driven Decision Making</div>
-          <div class="text-sm skill-desc">Turning insights into sustainable efficiency and profitability gains</div>
+          <div class="font-semibold text-xl mb-1 text-[#3F2A1E] dark:text-[#FFB366]">Data-Driven Decision Making</div>
+          <div class="text-sm text-[#46362B] dark:text-[#C9B8A8]">Turning insights into sustainable efficiency and profitability gains</div>
         </div>
 
         <div class="skill-card warm-card rounded-3xl p-7">
           <div class="w-11 h-11 rounded-2xl bg-[#F7F1E9] dark:bg-[#1C1611] flex items-center justify-center mb-5">
             <i class="fa-solid fa-truck text-2xl text-[#C45C26] dark:text-[#FFB366]"></i>
           </div>
-          <div class="font-semibold text-xl mb-1 skill-title">Automation &amp; Logistics Systems</div>
-          <div class="text-sm skill-desc">Delivering scalable systems that drive operational excellence</div>
+          <div class="font-semibold text-xl mb-1 text-[#3F2A1E] dark:text-[#FFB366]">Automation &amp; Logistics Systems</div>
+          <div class="text-sm text-[#46362B] dark:text-[#C9B8A8]">Delivering scalable systems that drive operational excellence</div>
         </div>
 
         <div class="skill-card warm-card rounded-3xl p-7">
           <div class="w-11 h-11 rounded-2xl bg-[#F7F1E9] dark:bg-[#1C1611] flex items-center justify-center mb-5">
             <i class="fa-solid fa-leaf text-2xl text-[#C45C26] dark:text-[#FFB366]"></i>
           </div>
-          <div class="font-semibold text-xl mb-1 skill-title">Sustainable Operations</div>
-          <div class="text-sm skill-desc">Building growth that lasts — efficient, ethical, and resilient</div>
+          <div class="font-semibold text-xl mb-1 text-[#3F2A1E] dark:text-[#FFB366]">Sustainable Operations</div>
+          <div class="text-sm text-[#46362B] dark:text-[#C9B8A8]">Building growth that lasts — efficient, ethical, and resilient</div>
         </div>
 
         <div class="skill-card warm-card rounded-3xl p-7">
           <div class="w-11 h-11 rounded-2xl bg-[#F7F1E9] dark:bg-[#1C1611] flex items-center justify-center mb-5">
             <i class="fa-solid fa-tachometer-alt text-2xl text-[#C45C26] dark:text-[#FFB366]"></i>
           </div>
-          <div class="font-semibold text-xl mb-1 skill-title">High-Performance Culture</div>
-          <div class="text-sm skill-desc">Embedding new habits and accountability across entire organizations</div>
+          <div class="font-semibold text-xl mb-1 text-[#3F2A1E] dark:text-[#FFB366]">High-Performance Culture</div>
+          <div class="text-sm text-[#46362B] dark:text-[#C9B8A8]">Embedding new habits and accountability across entire organizations</div>
         </div>
 
         <div class="skill-card warm-card rounded-3xl p-7">
           <div class="w-11 h-11 rounded-2xl bg-[#F7F1E9] dark:bg-[#1C1611] flex items-center justify-center mb-5">
             <i class="fa-solid fa-mountain text-2xl text-[#C45C26] dark:text-[#FFB366]"></i>
           </div>
-          <div class="font-semibold text-xl mb-1 skill-title">Intentional Execution</div>
-          <div class="text-sm skill-desc">Calm, strategic thinking forged in the desert</div>
+          <div class="font-semibold text-xl mb-1 text-[#3F2A1E] dark:text-[#FFB366]">Intentional Execution</div>
+          <div class="text-sm text-[#46362B] dark:text-[#C9B8A8]">Calm, strategic thinking forged in the desert</div>
         </div>
       </div>
     </div>
@@ -474,8 +420,8 @@
       <div class="md:col-span-5">
         <div class="sticky top-24">
           <div class="uppercase tracking-[2px] text-xs font-semibold text-[#C45C26] dark:text-[#FFB366] mb-3">LET'S TALK</div>
-          <h2 class="text-5xl heading-serif tracking-tighter mb-6 leading-none contact-heading">Want to work together?</h2>
-          <p class="text-lg contact-desc mb-8">Whether you're looking for my skillset, have a project or idea, or just want to say hello — I'd love to hear from you.</p>
+          <h2 class="text-5xl heading-serif tracking-tighter mb-6 leading-none">Want to work together?</h2>
+          <p class="text-lg text-[#1F170F] dark:text-[#C9B8A8] mb-8">Whether you're looking for my skillset, have a project or idea, or just want to say hello — I'd love to hear from you.</p>
           
           <div class="space-y-4 text-sm">
             <a href="https://www.linkedin.com/in/lukeaperea/" target="_blank" class="flex items-center gap-x-3 group">
@@ -484,7 +430,7 @@
               </div>
               <div>
                 <div class="font-medium">LinkedIn</div>
-                <div class="contact-label text-xs">Connect with me</div>
+                <div class="text-[#C45C26] dark:text-[#FFB366] text-xs">Connect with me</div>
               </div>
             </a>
           </div>
@@ -497,19 +443,19 @@
           <form id="contact-form" class="space-y-6">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
-                <label class="block text-sm font-medium mb-2 contact-label" for="name">Name</label>
+                <label class="block text-sm font-medium mb-2 text-[#C45C26] dark:text-[#FFB366]" for="name">Name</label>
                 <input type="text" id="name" name="from_name" required 
-                      class="form-input w-full px-5 py-3.5 rounded-2xl border border-[#EDE4D1] dark:border-[#3A3129] bg-white dark:bg-[#1C1611] text-base">
+                       class="form-input w-full px-5 py-3.5 rounded-2xl border border-[#EDE4D1] dark:border-[#3A3129] bg-white dark:bg-[#1C1611] text-base">
               </div>
               <div>
-                <label class="block text-sm font-medium mb-2 contact-label" for="email">Email</label>
+                <label class="block text-sm font-medium mb-2 text-[#C45C26] dark:text-[#FFB366]" for="email">Email</label>
                 <input type="email" id="email" name="from_email" required 
-                      class="form-input w-full px-5 py-3.5 rounded-2xl border border-[#EDE4D1] dark:border-[#3A3129] bg-white dark:bg-[#1C1611] text-base">
+                       class="form-input w-full px-5 py-3.5 rounded-2xl border border-[#EDE4D1] dark:border-[#3A3129] bg-white dark:bg-[#1C1611] text-base">
               </div>
             </div>
             
             <div>
-              <label class="block text-sm font-medium mb-2 contact-label" for="message">Message</label>
+              <label class="block text-sm font-medium mb-2 text-[#C45C26] dark:text-[#FFB366]" for="message">Message</label>
               <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project or just say hello..."
                         class="form-input w-full px-5 py-4 rounded-3xl border border-[#EDE4D1] dark:border-[#3A3129] bg-white dark:bg-[#1C1611] text-base resize-y min-h-[140px]"></textarea>
             </div>
@@ -530,8 +476,8 @@
             <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-[#F7F1E9] dark:bg-[#0A0705] flex items-center justify-center">
               <i class="fa-solid fa-check text-3xl text-[#C45C26] dark:text-[#FFB366]"></i>
             </div>
-            <h3 class="text-2xl font-semibold mb-2 contact-heading">Thank you!</h3>
-            <p class="success-text">Your message has been sent. I'll get back to you soon.</p>
+            <h3 class="text-2xl font-semibold mb-2">Thank you!</h3>
+            <p class="text-[#6B5544] dark:text-[#C4B5A5]">Your message has been sent. I'll get back to you soon.</p>
           </div>
         </div>
       </div>
