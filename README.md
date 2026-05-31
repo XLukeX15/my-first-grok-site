@@ -4,10 +4,7 @@ Results-driven transformation leader based in El Paso, Texas.
 
 ## Live Site
 
-Currently live at:  
-**https://xlukex15.github.io/my-first-grok-site/**
-
-We plan to move this to Vercel with a custom domain soon.
+**https://lukeperea.com**
 
 ## Tech Stack
 
